@@ -1,21 +1,28 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { LOCALE_ID, NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { AppComponent } from "./app.component";
-import { registerLocaleData } from "@angular/common";
-
-import localePl from "@angular/common/locales/pl";
+import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { ListComponent } from './list/list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TasksComponent } from './tasks/tasks.component';
 import { FormComponent } from './form/form.component';
-
-registerLocaleData(localePl);
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, ListComponent, FormComponent],
-  imports: [BrowserModule],
-  providers: [{ provide: LOCALE_ID, useValue: "pl-PL" }],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    TasksComponent,
+    FormComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgbModule,
+    FormsModule
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -1,1 +1,10 @@
-<p>form works!</p>
+<div class="row">
+
+      <div class="input-field col-xl-11">
+        <input placeholder="Name of task" name="taskTitle" [(ngModel)]="taskTitle" type="text" class="validate">
+      </div>
+      <div class="input-field col-xl-1">
+        <a [hidden]="!taskTitle" (click)="addNewTask()" class="btn-floating btn-large waves-effect waves-light pink"><i class="material-icons">add</i></a>
+      </div>
+
+</div>

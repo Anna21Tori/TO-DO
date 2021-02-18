@@ -1,45 +1,19 @@
+<app-header>
+  {{config?.title | uppercase}}
+</app-header>
 <div class="container">
-  <app-header>
-    {{config?.title | uppercase}}
-  </app-header>
-
   <div class="row">
-    <button class="btn col s2 offset-s10">Dodaj zadanie</button>
-    <button class="btn col s2 offset-s10">Zakończ</button>
+    <div class="col-xl-12">
+      <app-form (newTask)="addNewTask($event)"></app-form>
+    </div>
   </div>
-
-  <div class="row">
-    <input
-      class="col s8"
-      type="text"
-      placeholder="Dodaj zadanie i datę wykonania"
-    />
-    <input class="col s2 disabled" type="date" />
-    <button class="btn-floating">+</button>
+  <div class="row justify-content-center">
+    <div class="col-xl-10">
+      <app-tasks [tasks]="tasks"></app-tasks>
+    </div>
   </div>
-
-  <ul class="collection">
-    <li class="collection-item row">
-      <span class="col s10">{{100 | currency: 'PLN'}}</span>
-      <div class="col s2 right-align">
-        <button class="btn-floating btn-small red">
-          <i class="material-icons">remove</i>
-        </button>
-        <button class="btn-floating btn-small green ml-5">
-          <i class="material-icons">check</i>
-        </button>
-      </div>
-    </li>
-    <li class="collection-item row">
-      <span class="col done">Sprzątanie kuwet</span>
-    </li>
-  </ul>
-
-  <h1>Dzisiaj brak zadań :-)</h1>
-
-  <button class="btn red">Wyczyść</button>
-
-  <app-footer>
-    {{config?.date | date: 'yyyy'}} {{config?.footer}}
-  </app-footer>
 </div>
+<app-footer>
+  © {{config?.date | date: 'yyyy'}} {{config?.footer}}
+</app-footer>
+
