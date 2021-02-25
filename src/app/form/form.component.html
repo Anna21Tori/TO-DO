@@ -1,6 +1,6 @@
 <div class="row">
 
-      <div class="input-field col-xl-11">
+      <div class="input-field" [ngClass]="{'col-xl-11':taskTitle != '', 'col-xl-12':taskTitle === '' }">
         <input placeholder="Name of task" name="taskTitle" [(ngModel)]="taskTitle" type="text" class="validate">
       </div>
       <div class="input-field col-xl-1">

@@ -1,0 +1,23 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1 id="modal-title">Edit Task ...</h1>
+  </header>
+  <section id="modal-body">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Title Task</mat-label>
+        <input type="text" matInput name="taskTitle" [(ngModel)]="taskTitle">
+      </mat-form-field>
+
+  </section>
+  <footer id="modal-footer">
+    <div class="row justify-content-center">
+      <div class="col-xl-2">
+        <button mat-flat-button color="accent" id="modal-action-button" (click)="actionFunction()">Save</button>
+      </div>
+      <div class="col-xl-2">
+        <button mat-flat-button color="primary" id="modal-cancel-button" (click)="closeModal()">Go back</button>
+      </div>
+    </div>
+  </footer>
+</div>

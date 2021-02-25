@@ -1,8 +1,9 @@
 footer{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: baseline;
   border-top: rgb(211, 204, 204) solid 1px;
+  text-align: center;
 }
 

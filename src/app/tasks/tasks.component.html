@@ -3,7 +3,7 @@
         {{task.title}}
     </div>
   <div class="col-xl-1" *ngIf="task.status === 0">
-    <a class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">done</i></a>
+    <a class="btn-floating btn-small waves-effect waves-light green" (click)="showModal(task)"><i class="material-icons">done</i></a>
   </div>
 </div>
 

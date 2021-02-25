@@ -9,8 +9,8 @@ import {StatusTask} from '../models/statusTask';
 })
 export class DataBase {
   private tasks: Task[] = [
-    {title: 'Make cake', date: new Date(), status: StatusTask.PENDING},
-    {title: 'Take a shower', date: new Date(), status: StatusTask.PENDING},
+    {title: 'Znaleźć praktyki/staż!!!!', date: new Date(), status: StatusTask.PENDING},
+    {title: 'Błagać o praktyki/staż!!!!', date: new Date(), status: StatusTask.PENDING},
   ];
   constructor() {}
 
