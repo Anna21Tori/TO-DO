@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Task} from './models/task';
-import {DataService} from './services/data.service';
+import {HttpTasksService} from './services/http-tasks.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,8 @@ import {DataService} from './services/data.service';
 export class AppComponent implements OnInit{
   config: { [key: string]: string | Date } = null;
   tasks: Task[];
-  private subscriptions = new Subscription();
-  constructor(private http: DataService) {
+ // private subscriptions = new Subscription();
+  constructor(private http: HttpTasksService) {
   }
 
   ngOnInit(): void {
@@ -22,17 +22,17 @@ export class AppComponent implements OnInit{
       footer: ' All rights reserved.',
       date: new Date()
     };
-
-    const sub = this.http.behaviorSubject.subscribe(
-      (data: Task[]) => {
-        this.tasks = data;
-      },
-      error => console.error(error),
-      () => console.log('Complete!')
-    );
-    this.subscriptions.add(sub);
+    this.http.getTasks().subscribe();
+    // const sub = this.http.behaviorSubject.subscribe(
+    //   (data: Task[]) => {
+    //     this.tasks = data;
+    //   },
+    //   error => console.error(error),
+    //   () => console.log('Complete!')
+    // );
+    // this.subscriptions.add(sub);
   }
   addNewTask(task: Task): void{
-    this.http.addTask(task);
+    //this.http.addTask(task);
   }
 }

@@ -19,13 +19,11 @@ export class TasksComponent implements OnInit {
 
   showModal(editTask: Task): void{
     const dialogConfig = new MatDialogConfig();
-    // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = true;
     dialogConfig.id = "edit-component";
     dialogConfig.height = "350px";
     dialogConfig.width = "600px";
     dialogConfig.data = editTask;
-    // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(EditComponent, dialogConfig);
   }
 
