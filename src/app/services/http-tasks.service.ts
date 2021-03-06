@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
 import {Task} from '../models/task';
 import {tap} from 'rxjs/operators';
 
@@ -9,14 +9,19 @@ import {tap} from 'rxjs/operators';
 })
 export class HttpTasksService {
 
-  private url = 'http://localhost:4000';
+ //private url = 'http://localhost:4000';
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json; charset=UTF-8',
+    })
+  }
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]>{
-    return this.http.get<Task[]>(this.url + '/task')
-      .pipe(tap(console.log));
+    return this.http.get<Task[]>('api/task').pipe(tap(console.log)); //`${this.url}/task`
   }
-  addTask(task: Task): void{
-    this.http.post(this.url + '/task', task);
+  addTask(task: Task): Observable<Task>{
+    return this.http.post<Task>(`api/task`, task, this.httpOptions);
   }
+
 }

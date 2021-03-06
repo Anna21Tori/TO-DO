@@ -22,7 +22,9 @@ export class AppComponent implements OnInit{
       footer: ' All rights reserved.',
       date: new Date()
     };
-    this.http.getTasks().subscribe();
+    this.http.getTasks()
+      .subscribe((data: Task[]) => this.tasks = data
+    );
     // const sub = this.http.behaviorSubject.subscribe(
     //   (data: Task[]) => {
     //     this.tasks = data;
@@ -33,6 +35,7 @@ export class AppComponent implements OnInit{
     // this.subscriptions.add(sub);
   }
   addNewTask(task: Task): void{
-    //this.http.addTask(task);
+    this.http.addTask(task).subscribe((data: Task) => this.tasks.push(data));
+   this.tasks.forEach( t => console.log(t.title));
   }
 }
