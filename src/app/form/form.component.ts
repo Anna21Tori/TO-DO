@@ -11,10 +11,11 @@ import {DatePipe} from '@angular/common';
 export class FormComponent implements OnInit {
 
   @Output() newTask = new EventEmitter<Task>();
-  taskTitle = '';
+  taskTitle: string;
   constructor(public datePipe: DatePipe) { }
 
   ngOnInit(): void {
+    this.taskTitle = '';
   }
 
   addNewTask(): any{
