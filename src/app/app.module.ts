@@ -16,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
+import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {DatePipe} from '@angular/common';
     HeaderComponent,
     TasksComponent,
     FormComponent,
-    EditComponent
+    EditComponent,
+    DeleteComponent
   ],
   imports: [
     BrowserModule,

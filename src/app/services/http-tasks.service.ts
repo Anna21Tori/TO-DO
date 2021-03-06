@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {Task} from '../models/task';
-import {concatAll, first, tap} from 'rxjs/operators';
+import {catchError, concatAll, first, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class HttpTasksService {
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]>{
-    return this.http.get<Task[]>('api/task').pipe(tap(console.log)); //`${this.url}/task`
+    return this.http.get<Task[]>('api/task').pipe(tap(console.log));
   }
   addTask(task: Task): Observable<Task>{
     return this.http.post<Task[]>(`api/task`, task, this.httpOptions).pipe(
@@ -26,5 +26,13 @@ export class HttpTasksService {
       first()
     );
   }
-
+  updateTask(task: Task): Observable<Task>{
+    return this.http.put<Task[]>(`api/task/${task.id}`, task, this.httpOptions).pipe(
+      concatAll(),
+      first()
+    );
+  }
+  deleteTask(id: number): Observable<{}>{
+    return this.http.delete(`api/task/${id}`, this.httpOptions);
+  }
 }

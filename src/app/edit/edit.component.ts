@@ -18,11 +18,11 @@ export class EditComponent implements OnInit{
   ngOnInit() {
   }
 
-  actionFunction() {
-    this.closeModal();
+  save() {
+    this.dialogRef.close(this.taskTitle);
   }
 
-  closeModal() {
+  close() {
     this.dialogRef.close();
   }
 

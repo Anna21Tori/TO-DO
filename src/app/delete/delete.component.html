@@ -1,0 +1,8 @@
+<div id="modal-content-wrapper">
+  <h1 mat-dialog-title>Delete task</h1>
+  <div mat-dialog-content>Do you really want to delete the task "{{task?.title}}"? </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="consent()">Yes</button>
+    <button mat-button mat-dialog-close (click)="refusal()">No</button>
+  </div>
+</div>
