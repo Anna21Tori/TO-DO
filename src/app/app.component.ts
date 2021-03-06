@@ -44,12 +44,14 @@ export class AppComponent implements OnInit{
   }
   filterTask(): void{
     const pendingTask = this.tasks.filter((item) => {
-      return StatusTask[status.toString()] === 0 ? item : null;
+      return StatusTask[item.status.toString()] === 0 ? item : null;
     });
 
     const doneTask = this.tasks.filter((item) => {
-      return StatusTask[status.toString()] === 2 ? item : null;
+      return StatusTask[item.status.toString()] === 2 ? item : null;
     });
     this.tasks = [... pendingTask, ... doneTask];
+
+    //console.log(pendingTask);
   }
 }
