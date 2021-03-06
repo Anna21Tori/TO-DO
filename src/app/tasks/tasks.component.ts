@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Task} from '../models/task';
 import {EditComponent} from '../edit/edit.component';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {StatusTask} from '../models/statusTask';
 
 @Component({
   selector: 'app-tasks',
@@ -20,11 +21,14 @@ export class TasksComponent implements OnInit {
   showModal(editTask: Task): void{
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.id = "edit-component";
-    dialogConfig.height = "350px";
-    dialogConfig.width = "600px";
+    dialogConfig.id = 'edit-component';
+    dialogConfig.height = '350px';
+    dialogConfig.width = '600px';
     dialogConfig.data = editTask;
     const modalDialog = this.matDialog.open(EditComponent, dialogConfig);
+  }
+  isPending(status: StatusTask): boolean{
+    return StatusTask[status.toString()] === 0 ;
   }
 
 }

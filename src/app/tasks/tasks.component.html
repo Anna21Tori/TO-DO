@@ -1,8 +1,8 @@
 <div class="row justify-content-center border-div p-2" *ngFor="let task of tasks">
-    <div class="col-xl-11" *ngIf="task?.status === 0">
+    <div class="col-xl-11" *ngIf="isPending(task?.status)">
         {{task?.title}}
     </div>
-  <div class="col-xl-1" *ngIf="task?.status === 0">
+  <div class="col-xl-1" *ngIf="isPending(task?.status)">
     <a class="btn-floating btn-small waves-effect waves-light green" (click)="showModal(task)"><i class="material-icons">done</i></a>
   </div>
 </div>

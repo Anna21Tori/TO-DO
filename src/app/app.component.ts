@@ -26,7 +26,7 @@ export class AppComponent implements OnInit{
     );
   }
   addNewTask(task: Task): void{
-    this.http.addTask(task).subscribe((data: Task) => this.tasks.push(data));
-   //this.tasks.forEach( t => console.log(t.title));
+    this.http.addTask(task).subscribe((data: Task) => this.tasks.push(data)
+    );
   }
 }
