@@ -18,7 +18,7 @@ export class HttpTasksService {
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]>{
-    return this.http.get<Task[]>('api/task').pipe(tap(console.log));
+    return this.http.get<Task[]>('api/task');
   }
   addTask(task: Task): Observable<Task>{
     return this.http.post<Task[]>(`api/task`, task, this.httpOptions).pipe(

@@ -36,11 +36,9 @@ export class AppComponent implements OnInit{
     );
   }
   deleteTask(id: number): void{
-    console.log(id);
     this.tasks = this.tasks.filter((item) => {
       return item.id !== id ? item : null;
     });
-    console.log(this.tasks);
   }
   filterTask(): void{
     const pendingTask = this.tasks.filter((item) => {
@@ -52,7 +50,6 @@ export class AppComponent implements OnInit{
     });
     this.tasks = [... pendingTask, ... doneTask];
 
-    //console.log(pendingTask);
   }
   update(task: Task): void{
     this.tasks = this.tasks.filter((item) => {
