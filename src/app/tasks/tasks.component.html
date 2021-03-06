@@ -2,14 +2,14 @@
     <div class="col-xl-8" [ngClass]="{'doneTask': !isPending(task?.status)}">
         {{task?.title}}
     </div>
-  <div class="col-xl-1" *ngIf="isPending(task?.status)">
-    <a class="btn-floating btn-small waves-effect waves-light blue" (click)="edit(task)"><i class="material-icons">edit</i></a>
+  <div class="col-xl-1">
+    <a class="btn-floating btn-small waves-effect waves-light green" [ngClass]="{'disabled': !isPending(task?.status)}" (click)="done(task)"><i class="material-icons">done</i></a>
   </div>
-  <div class="col-xl-1" *ngIf="isPending(task?.status)">
+  <div class="col-xl-1">
+    <a class="btn-floating btn-small waves-effect waves-light blue" [ngClass]="{'disabled': !isPending(task?.status)}" (click)="edit(task)"><i class="material-icons">edit</i></a>
+  </div>
+  <div class="col-xl-1">
     <a class="btn-floating btn-small waves-effect waves-light pink" (click)="delete(task)"><i class="material-icons">delete</i></a>
-  </div>
-  <div class="col-xl-1" *ngIf="isPending(task?.status)">
-    <a class="btn-floating btn-small waves-effect waves-light green" (click)="done(task)"><i class="material-icons">done</i></a>
   </div>
 </div>
 
