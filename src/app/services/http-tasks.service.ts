@@ -35,4 +35,10 @@ export class HttpTasksService {
   deleteTask(id: number): Observable<{}>{
     return this.http.delete(`api/task/${id}`, this.httpOptions);
   }
+  changeStatusFromPendingToDone(task: Task): Observable<Task>{
+    return this.http.put<Task[]>(`api/task/${task.id}/done`, task, this.httpOptions).pipe(
+      concatAll(),
+      first()
+    );
+  }
 }

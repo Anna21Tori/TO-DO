@@ -1,5 +1,5 @@
 <div class="row justify-content-between border-div p-2" *ngFor="let task of tasks">
-    <div class="col-xl-8" *ngIf="isPending(task?.status)">
+    <div class="col-xl-8" [ngClass]="{'doneTask': !isPending(task?.status)}">
         {{task?.title}}
     </div>
   <div class="col-xl-1" *ngIf="isPending(task?.status)">

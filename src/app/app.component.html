@@ -9,7 +9,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-xl-10">
-      <app-tasks [tasks]="tasks" (idTask)="deleteTask($event)"></app-tasks>
+      <app-tasks [tasks]="tasks" (idTask)="deleteTask($event)" (updateTask)="update($event)"></app-tasks>
     </div>
   </div>
 </div>

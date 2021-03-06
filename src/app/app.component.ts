@@ -54,4 +54,11 @@ export class AppComponent implements OnInit{
 
     //console.log(pendingTask);
   }
+  update(task: Task): void{
+    this.tasks = this.tasks.filter((item) => {
+      return task.id !== item.id ? item : null;
+    });
+    this.tasks.push(task);
+    this.filterTask();
+  }
 }

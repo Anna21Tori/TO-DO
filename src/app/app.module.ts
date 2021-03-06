@@ -17,6 +17,7 @@ import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
 import { DeleteComponent } from './delete/delete.component';
+import { DoneComponent } from './done/done.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DeleteComponent } from './delete/delete.component';
     TasksComponent,
     FormComponent,
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    DoneComponent
   ],
   imports: [
     BrowserModule,

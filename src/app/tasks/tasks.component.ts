@@ -5,6 +5,7 @@ import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {StatusTask} from '../models/statusTask';
 import {HttpTasksService} from '../services/http-tasks.service';
 import {DeleteComponent} from '../delete/delete.component';
+import {DoneComponent} from '../done/done.component';
 
 @Component({
   selector: 'app-tasks',
@@ -14,6 +15,7 @@ import {DeleteComponent} from '../delete/delete.component';
 export class TasksComponent implements OnInit {
   @Input() tasks: Task[];
   @Output() idTask = new EventEmitter<number>();
+  @Output() updateTask = new EventEmitter<Task>();
   constructor(public matDialog: MatDialog, private http: HttpTasksService) {
 
   }
@@ -31,9 +33,8 @@ export class TasksComponent implements OnInit {
     const modalDialog = this.matDialog.open(EditComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(
       data => {
-        editTask.title = data;
         this.http.updateTask(editTask).subscribe(
-          item => console.log(item)
+          item => this.updateTask.emit(item)
         );
       }
     );
@@ -46,8 +47,8 @@ export class TasksComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = 'delete-component';
-    dialogConfig.height = '200px';
-    dialogConfig.width = '200px';
+    dialogConfig.height = '300px';
+    dialogConfig.width = '300px';
     dialogConfig.data = deleteTask;
     const modalDialog = this.matDialog.open(DeleteComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(
@@ -61,8 +62,23 @@ export class TasksComponent implements OnInit {
     );
   }
 
-  done(): void {
-
+  done(doneTask: Task): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.id = 'delete-component';
+    dialogConfig.height = '300px';
+    dialogConfig.width = '300px';
+    dialogConfig.data = doneTask;
+    const modalDialog = this.matDialog.open(DoneComponent, dialogConfig);
+    modalDialog.afterClosed().subscribe(
+      data => {
+        if (data){
+          this.http.changeStatusFromPendingToDone(doneTask).subscribe(
+            item => this.updateTask.emit(item)
+          );
+        }
+      }
+    );
   }
 
 }
