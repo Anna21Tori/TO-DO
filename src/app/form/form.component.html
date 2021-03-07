@@ -1,12 +1,17 @@
-<div class="row">
 
-      <div class="input-field col-xl-8">
-        <input placeholder="Name of task" name="title" [(ngModel)]="taskTitle" type="text" class="validate">
-      </div>
-      <div class="col-xl-3">
-        <input type="date" required="required"/>
-      </div>
-      <div class="input-field col-xl-1">
-        <a (click)="addNewTask()"  class="btn-floating btn-large waves-effect waves-light pink"><i class="material-icons">add</i></a>
-      </div>
-</div>
+  <form (ngSubmit)="addNewTask()" #form="ngForm">
+    <div class="row">
+        <div class="input-field col-xl-8">
+          <input placeholder="Name ..." name="title" [(ngModel)]="model.title" type="text" #title="ngModel" required>
+        </div>
+        <div class="col-xl-3">
+          <input type="date" name="date" [(ngModel)]="model.date" #date="ngModel" required/>
+        </div>
+        <div class="input-field col-xl-1">
+          <button [disabled]="form.invalid" type="submit" mat-fab color="accent" aria-label="Example icon button with a plus one icon">
+            <i class="material-icons">add</i>
+          </button>
+        </div>
+    </div>
+  </form>
+

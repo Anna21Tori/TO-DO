@@ -45,7 +45,7 @@ import {PanelComponent} from './panel/panel.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

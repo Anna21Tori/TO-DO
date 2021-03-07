@@ -12,17 +12,20 @@ import {PriorityStatus} from '../models/priorityStatus';
 export class FormComponent implements OnInit {
 
   @Output() newTask = new EventEmitter<Task>();
-  taskTitle: string;
+  model: Partial<Task> = {
+    title: ''
+  };
   constructor(public datePipe: DatePipe) { }
 
   ngOnInit(): void {
-    this.taskTitle = '';
-  }
 
+  }
   addNewTask(): any{
-    const date = new Date()
-    const task: Task = {title: this.taskTitle, date: this.datePipe.transform(date, 'yyyy-MM-dd'), status: StatusTask.PENDING, priority: PriorityStatus.NONE};
+    const task: Task = {title: this.model.title, date: this.datePipe.transform(this.model.date, 'yyyy-MM-dd'), status: StatusTask.PENDING, priority: PriorityStatus.NONE};
     this.newTask.emit(task);
-    this.taskTitle = '';
+    this.model = {
+      title: '',
+      date: ''
+    };
   }
 }
