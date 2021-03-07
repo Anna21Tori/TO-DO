@@ -11,11 +11,12 @@ import {StatusTask} from './models/statusTask';
 export class AppComponent implements OnInit{
   config: { [key: string]: string | Date } = null;
   tasks: Task[];
+  numPending: number;
   constructor(private http: HttpTasksService, private ref: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
-
+    this.numPending = 0;
     this.config = {
       title: 'to-do list',
       footer: ' All rights reserved.',
@@ -48,6 +49,7 @@ export class AppComponent implements OnInit{
     const doneTask = this.tasks.filter((item) => {
       return StatusTask[item.status.toString()] === 2 ? item : null;
     });
+    this.numPending = pendingTask.length;
     this.tasks = [... pendingTask, ... doneTask];
 
   }

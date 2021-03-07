@@ -19,6 +19,7 @@ import {DatePipe} from '@angular/common';
 import { DeleteComponent } from './delete/delete.component';
 import { DoneComponent } from './done/done.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { PanelComponent } from './panel/panel.component';
 
 
 
@@ -31,7 +32,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     FormComponent,
     EditComponent,
     DeleteComponent,
-    DoneComponent
+    DoneComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,

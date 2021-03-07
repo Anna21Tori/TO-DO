@@ -1,0 +1,10 @@
+<div class="d-sm-inline-flex flex-row">
+  <div class="align-self-center p-2" [ngSwitch]="numPending">
+    <p *ngSwitchCase="0"> You can chill out!</p>
+    <p *ngSwitchCase="1"> You have 1 pending task!</p>
+    <p *ngSwitchDefault> You have {{numPending}} pending tasks!</p>
+  </div>
+  <div  class="p-2" *ngIf="numPending != 0">
+    <button mat-raised-button color="accent">Clear All!<i class="material-icons">delete</i></button>
+  </div>
+</div>

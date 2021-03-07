@@ -1,18 +1,26 @@
 <app-header>
   {{config?.title | uppercase}}
 </app-header>
-<div class="container">
-  <div class="row">
-    <div class="col-xl-12">
-      <app-form (newTask)="addNewTask($event)"></app-form>
+<div class="flex-fill">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <app-form (newTask)="addNewTask($event)"></app-form>
+      </div>
     </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-xl-10">
-      <app-tasks [tasks]="tasks" (idTask)="deleteTask($event)" (updateTask)="update($event)"></app-tasks>
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-xl-6">
+        <app-panel [numPending]="numPending"></app-panel>
+      </div>
+      <div class="col-xl-6">
+        <app-tasks [tasks]="tasks" (idTask)="deleteTask($event)" (updateTask)="update($event)"></app-tasks>
+      </div>
     </div>
   </div>
 </div>
+
 <app-footer>
   © {{config?.date | date: 'yyyy'}} {{config?.footer}}
 </app-footer>
