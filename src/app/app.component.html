@@ -12,7 +12,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-xl-6">
-        <app-panel [numPending]="numPending"></app-panel>
+        <app-panel [numPending]="numPending" (idTask)="deleteTask($event)"></app-panel>
       </div>
       <div class="col-xl-6">
         <app-tasks [tasks]="tasks" (idTask)="deleteTask($event)" (updateTask)="update($event)"></app-tasks>

@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Task} from '../models/task';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {HttpTasksService} from '../services/http-tasks.service';
+
 
 @Component({
   selector: 'app-panel',
@@ -8,9 +9,17 @@ import {Task} from '../models/task';
 })
 export class PanelComponent implements OnInit {
   @Input() numPending: number;
-  constructor() { }
+  @Output() idTask = new EventEmitter<number>();
+  constructor(private http: HttpTasksService) { }
 
   ngOnInit(): void {
   }
 
+  clearAll(): void{
+    this.http.deleteAllTasks().subscribe(
+      () => {
+        this.idTask.emit(-1);
+      }
+    );
+  }
 }

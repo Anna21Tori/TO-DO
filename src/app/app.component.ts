@@ -37,9 +37,10 @@ export class AppComponent implements OnInit{
     );
   }
   deleteTask(id: number): void{
-    this.tasks = this.tasks.filter((item) => {
+    this.tasks = id !== -1 ? this.tasks.filter((item) => {
       return item.id !== id ? item : null;
-    });
+    }) : [];
+    this.filterTask();
   }
   filterTask(): void{
     const pendingTask = this.tasks.filter((item) => {
