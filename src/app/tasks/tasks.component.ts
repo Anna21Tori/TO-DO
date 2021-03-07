@@ -6,6 +6,7 @@ import {StatusTask} from '../models/statusTask';
 import {HttpTasksService} from '../services/http-tasks.service';
 import {DeleteComponent} from '../delete/delete.component';
 import {DoneComponent} from '../done/done.component';
+import {PriorityStatus} from '../models/priorityStatus';
 
 @Component({
   selector: 'app-tasks',
@@ -33,6 +34,7 @@ export class TasksComponent implements OnInit {
     const modalDialog = this.matDialog.open(EditComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(
       data => {
+        editTask.title = data;
         this.http.updateTask(editTask).subscribe(
           item => this.updateTask.emit(item)
         );
@@ -43,6 +45,18 @@ export class TasksComponent implements OnInit {
     return StatusTask[status.toString()] === 0 ;
   }
 
+  priority(priority: PriorityStatus): string{
+    if (PriorityStatus[priority.toString()] === 2){
+      return 'orange';
+    }
+    if (PriorityStatus[priority.toString()] === 0){
+      return 'red';
+    }
+    if (PriorityStatus[priority.toString()] === 1){
+      return 'green';
+    }
+    return 'black';
+  }
   delete(deleteTask: Task): void{
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

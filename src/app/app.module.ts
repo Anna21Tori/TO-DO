@@ -15,11 +15,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {HttpClientModule} from '@angular/common/http';
-import {DatePipe} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import { DeleteComponent } from './delete/delete.component';
 import { DoneComponent } from './done/done.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import { PanelComponent } from './panel/panel.component';
+import {PanelComponent} from './panel/panel.component';
+
 
 
 
@@ -37,6 +37,7 @@ import { PanelComponent } from './panel/panel.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     NgbModule,
     FormsModule,
     BrowserAnimationsModule,
