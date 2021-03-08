@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -7,7 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TasksComponent } from './tasks/tasks.component';
 import { FormComponent } from './form/form.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -19,6 +19,10 @@ import {CommonModule, DatePipe} from '@angular/common';
 import { DeleteComponent } from './delete/delete.component';
 import { DoneComponent } from './done/done.component';
 import {PanelComponent} from './panel/panel.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarHarness} from '@angular/material/progress-bar/testing';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatRadioButton, MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -46,6 +50,7 @@ import {PanelComponent} from './panel/panel.component';
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

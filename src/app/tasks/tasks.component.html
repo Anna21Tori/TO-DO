@@ -3,7 +3,7 @@
         {{task?.title}}
     </div>
   <div class="col-xl-3">
-    <span class="dot red" [ngClass]="priority(task.priority)"></span> {{task.priority.toString() | lowercase}}
+    <span class="dot" [ngClass]="priority(task.priority)"></span> {{task.priority.toString() | lowercase}}
   </div>
   <div class="col-xl-1">
     <a class="btn-floating btn-small waves-effect waves-light green" [ngClass]="{'disabled': !isPending(task?.status)}" (click)="done(task)"><i class="material-icons">done</i></a>

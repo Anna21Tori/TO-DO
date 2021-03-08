@@ -28,14 +28,13 @@ export class TasksComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.id = 'edit-component';
-    dialogConfig.height = '350px';
+    dialogConfig.height = '550px';
     dialogConfig.width = '600px';
     dialogConfig.data = editTask;
     const modalDialog = this.matDialog.open(EditComponent, dialogConfig);
     modalDialog.afterClosed().subscribe(
-      data => {
-        editTask.title = data;
-        this.http.updateTask(editTask).subscribe(
+      (data: Task) => {
+        this.http.updateTask(data).subscribe(
           item => this.updateTask.emit(item)
         );
       }

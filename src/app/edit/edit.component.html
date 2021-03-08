@@ -4,16 +4,57 @@
   </header>
   <section id="modal-body">
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Title Task</mat-label>
-        <input type="text" matInput name="taskTitle" [(ngModel)]="taskTitle">
-      </mat-form-field>
-
+    <div class="row">
+      <div class="input-field col s12">
+        <input  id="title" [(ngModel)]="task.title" type="text" #title="ngModel" class="validate" required>
+        <label for="title">Name to-do</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="date" name="date" #date="ngModel" [(ngModel)]="task.date" required/>
+      </div>
+    </div>
+    <form [formGroup]="priorityStatus">
+      <p>Set or change priority of task:</p>
+    <div class="row" >
+        <p>
+          <label>
+            <input name="priority" type="radio"  value="HIGH"  formControlName="priority" />
+            <span><span class="dot red"></span> High</span>
+          </label>
+        </p>
+    </div>
+      <div class="row" >
+        <p>
+          <label>
+            <input name="priority" type="radio"  value="MEDIUM"  formControlName="priority" />
+            <span><span class="dot orange"></span> Medium</span>
+          </label>
+        </p>
+      </div>
+      <div class="row" >
+        <p>
+          <label>
+            <input name="priority" type="radio"  value="LOW"  formControlName="priority" />
+            <span> <span class="dot green"></span> Low</span>
+          </label>
+        </p>
+      </div>
+      <div class="row" >
+        <p>
+          <label>
+            <input name="priority" type="radio"  value="NONE"  formControlName="priority" />
+            <span> <span class="dot black"></span> None</span>
+          </label>
+        </p>
+      </div>
+    </form>
   </section>
   <footer id="modal-footer">
     <div class="row justify-content-center">
       <div class="col-xl-2">
-        <button mat-flat-button color="accent" id="modal-action-button" (click)="save()">Save</button>
+        <button [disabled]="date.invalid || title.invalid" mat-flat-button color="accent" id="modal-action-button" (click)="save()">Save</button>
       </div>
       <div class="col-xl-2">
         <button mat-flat-button color="primary" id="modal-cancel-button" (click)="close()">Go back</button>
