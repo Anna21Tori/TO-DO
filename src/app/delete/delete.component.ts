@@ -22,7 +22,6 @@ export class DeleteComponent implements OnInit {
 
   refusal(): void {
     this.dialogRef.close(false);
-
   }
 
 }
